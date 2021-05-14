@@ -1,21 +1,36 @@
 package model;
 
 public class Medico {
-
+	
+	private String id;
     private String nome;
     private String sobrenome;
     private String crm;
     private boolean autorizacaoExame;
-    private List listaDeExames;
+    //private List<Exame> listaDeExames = new ArrayList<Exame>();
 
-    public Medico(String nome, String sobrenome, String crm, boolean autorizacaoExame){
+    public Medico(String id,String nome, String sobrenome, String crm){
+    	this.id = id;
         this.nome = nome;
         this.sobrenome = sobrenome;
         this.crm = crm;
-        this.autorizacaoExame = autorizacaoExame;
     }
+    
+    
 
-    public String getNome() {
+    public String getId() {
+		return id;
+	}
+
+
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+
+
+	public String getNome() {
         return nome;
     }
 
@@ -50,6 +65,7 @@ public class Medico {
 
     public String toString() {
         StringBuilder msg = new StringBuilder();
+        msg.append("Id: " + id + "\n");
         msg.append("Nome: " + nome + "\n");
         msg.append("Sobrenome: " + sobrenome + "\n");
         msg.append("CRM: " + crm + "\n");
