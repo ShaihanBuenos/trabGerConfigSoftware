@@ -77,5 +77,20 @@ public class Exames {
         this.exame = exame;
     }
 
+    public void remover(Exames umExame){
+        exams.remove(umExame);
+    }
+
+    @Override
+    public void editar(Exames umExame) {
+        if(umExame == null){
+            throw new IllegalArgumentException("valores inválidos");
+        }
+        int index = exames.indexOf(umExame);
+        if(index > -1){
+            exames.add(index, umExame);
+        }
+    }
+
 }
 
