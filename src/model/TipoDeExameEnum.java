@@ -1,6 +1,6 @@
 package model;
 
-public enum Exames {
+public enum TipoDeExameEnum {
     RaioX,
     Tomografia,
     MRI,

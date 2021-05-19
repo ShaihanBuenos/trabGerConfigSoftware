@@ -1,24 +1,26 @@
 package model;
 
-import java.sql.Date;
-import java.util.ArrayList;
+import java.util.Date;
 
-public class Autorizacoes {
-    private Medico medico;
-    private Paciente paciente;
+public class Autorizacao {
     private static int idCounter = 0;
     private int id;
     private Date dataCadastro;
-    private Exames exame;
-    private ArrayList<String> listaExames = new ArrayList<>(); 
+    private Medico medico;
+    private Paciente paciente;
+    private Exame exame;
 
-    public Autorizacoes(Date dataCadastro, Medico medico, Paciente paciente, Exames exame){
+    public Autorizacao(Date dataCadastro, Medico medico, Paciente paciente, Exame exame) {
         idCounter++;
         this.id = idCounter;
         this.dataCadastro = dataCadastro;
         this.medico = medico;
         this.paciente = paciente;
         this.exame = exame;
+    }
+
+    public static int getIdCounter() {
+        return idCounter;
     }
 
     public Medico getMedico() {
@@ -53,11 +55,20 @@ public class Autorizacoes {
         this.dataCadastro = dataCadastro;
     }
 
+    public Exame getExame() {
+        return exame;
+    }
+
+    public void setExame(Exame exame) {
+        this.exame = exame;
+    }
+
     @Override
     public String toString() {
-        return "Autorização: \n" + "Data de Cadastro: " + dataCadastro + "\n Tipo de exame: " + exame
-                + "\nId: " + id + "\nMédico: " + medico.getNome() + "\nPaciente: " + paciente.getNome() ;
+        return "Autorização: \n" + "Id: " + id + "\nData de Cadastro: " + dataCadastro + "\nExame: " + exame
+                + "\nMédico: " + medico.getNome() + " " + medico.getSobrenome() + "\nPaciente: " + paciente.getNome()
+                + " " + paciente.getSobrenome();
     }
-    
+
 }
 
