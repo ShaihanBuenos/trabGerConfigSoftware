@@ -1,3 +1,4 @@
+  
 package model;
 
 public class Administrador extends Usuario{
@@ -12,8 +13,8 @@ public class Administrador extends Usuario{
         StringBuilder msg = new StringBuilder();
         msg.append("Id: " + id + "\n");
         msg.append("Nome: " + nome + "\n");
-		msg.append("Sobrenome: " + sobrenome + "\n");
-		msg.append("Iniciais: " + iniciais + "\n");
+		    msg.append("Sobrenome: " + sobrenome + "\n");
+		    msg.append("Iniciais: " + iniciais + "\n");
         return msg.toString();
     }
 }
