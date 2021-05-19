@@ -11,8 +11,10 @@ public class Exames {
     private Date dataCadastro;
     private String exame;
     private boolean autorizacaoExame;
+    private List<Exames> exames = new ArrayList<>();
+    private ArrayList<String> listaExames = new ArrayList<>(); 
 
-    List<Exames> exames = new ArrayList<>();
+    public Exames(){}
 
     public Exames(String id, Date dataCadastro, Medico medico, Paciente paciente, String exame, boolean autorizacaoExame){
         this.id = id;
@@ -23,11 +25,7 @@ public class Exames {
         this.autorizacaoExame = autorizacaoExame;
     }
 
-    @Override
-    public String toString() {
-        return "Exame: \n" + "Data de Cadastro: " + dataCadastro + "\n Tipo de exame: " + exame
-                + "\nId: " + id + "\nMédico: " + medico.getNome() + "\nPaciente: " + paciente.getNome() ;
-    }
+
 
     public boolean isAutorizacaoExame() {
         return autorizacaoExame;
@@ -69,19 +67,17 @@ public class Exames {
         this.dataCadastro = dataCadastro;
     }
 
-    public String getExame() {
+    public String getExame(int i) {
+        int index = (i -1);
+        String exame = listaExames.get(index);
         return exame;
     }
 
-    public void setExame(String exame) {
-        this.exame = exame;
-    }
-
     public void remover(Exames umExame){
-        exams.remove(umExame);
+        exames.remove(umExame);
     }
 
-    @Override
+
     public void editar(Exames umExame) {
         if(umExame == null){
             throw new IllegalArgumentException("valores inválidos");
@@ -91,6 +87,34 @@ public class Exames {
             exames.add(index, umExame);
         }
     }
+    public void examesDisponiveis(){
+  
+        listaExames.add("Raio-x");
+        listaExames.add("Tomografia");
+        listaExames.add("Ressonância Magnética");
+        listaExames.add("Ultrassonografia");
+        listaExames.add("Radiografia");
+        listaExames.add("Mamografia");
+        listaExames.add("Densitometria Óssea");
 
+        
+    }
+
+    public String toStringExamesDisponiveis(){
+        StringBuilder s = new StringBuilder();
+        for (int i = 0; i < listaExames.size(); i++ ){
+            int index = (listaExames.indexOf(listaExames.get(i)) + 1);
+            s.append(index +" - " + listaExames.get(i).toString());
+            s.append("\n");
+        }
+        return s.toString();
+    }
+
+    @Override
+    public String toString() {
+        return "Exame: \n" + "Data de Cadastro: " + dataCadastro + "\n Tipo de exame: " + exame
+                + "\nId: " + id + "\nMédico: " + medico.getNome() + "\nPaciente: " + paciente.getNome() ;
+    }
+    
 }
 
