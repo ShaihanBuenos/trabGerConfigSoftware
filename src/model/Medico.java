@@ -1,51 +1,17 @@
 package model;
 
-public class Medico {
-	
-	private String id;
-    private String nome;
-    private String sobrenome;
+public class Medico extends Usuario{
     private String crm;
     private boolean autorizacaoExame;
     //private List<Exame> listaDeExames = new ArrayList<Exame>();
 
-    public Medico(String id,String nome, String sobrenome, String crm){
-    	this.id = id;
-        this.nome = nome;
-        this.sobrenome = sobrenome;
+    public Medico(String nome, String sobrenome, String crm){
+        super(nome, sobrenome);
+        setId("M"+getIDCounter());
         this.crm = crm;
+        this.autorizacaoExame = true;
     }
     
-    
-
-    public String getId() {
-		return id;
-	}
-
-
-
-	public void setId(String id) {
-		this.id = id;
-	}
-
-
-
-	public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getSobrenome() {
-        return sobrenome;
-    }
-
-    public void setSobrenome(String sobrenome) {
-        this.sobrenome = sobrenome;
-    }
-
     public String getCrm() {
         return crm;
     }
@@ -68,7 +34,9 @@ public class Medico {
         msg.append("Id: " + id + "\n");
         msg.append("Nome: " + nome + "\n");
         msg.append("Sobrenome: " + sobrenome + "\n");
+        msg.append("Iniciais: " + iniciais + "\n");
         msg.append("CRM: " + crm + "\n");
+        msg.append("Autorizado exames: "+ ((autorizacaoExame)?"Sim":"Não") +"\n");
         return msg.toString();
     }
 
