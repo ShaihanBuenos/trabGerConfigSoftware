@@ -5,7 +5,9 @@ Repositório para fazermos o trabalho 1 de Gerenciamento de Configuração de So
 Integrantes: 
 
 * Bruno Brandão
+* Diogo Del Mauro dos Santos
 * Felipe Fonseca Fagundes
+* Felipe Garcia Bernardes
 * Laura Caetano
 * Lucas Castro
 * Micael Fischmann
@@ -14,6 +16,8 @@ Integrantes:
 * Vinicio Muller
 
 
-
 Flow: Git Flow
+
+Comando para compilação: javac -encoding UTF8 Main.java
+Comando para execução: java Main
 
