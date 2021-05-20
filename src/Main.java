@@ -35,17 +35,21 @@ public class Main {
 
         Usuario paciente1 = new Paciente("Joana", "Silva", "JSilva@gmail.com");
         Usuario paciente2 = new Paciente("Matheus", "Carvalho", "mcar@gmail.com");
+        Usuario paciente3 = new Paciente("Kleber", "Fernandes", "kfernandes@hotmail.com");
 
         Usuario medico1 = new Medico("Lucas", "Cardoso", "194528-RS");
         Usuario medico2 = new Medico("Rodrigo", "Jardim", "143223-RS");
+        Usuario medico3 = new Medico("Thiago", "Schneider", "169876-RS");
 
         Usuario administrador1 = new Administrador("Paulo", "Soarez");
         Usuario administrador2 = new Administrador("Joao", "Luchese");
 
         listaDePacientes.add((Paciente) paciente1);
         listaDePacientes.add((Paciente) paciente2);
+        listaDePacientes.add((Paciente) paciente3);
         listaDeMedicos.add((Medico) medico1);
         listaDeMedicos.add((Medico) medico2);
+        listaDeMedicos.add((Medico) medico3);
         listaDeAdministradores.add((Administrador) administrador1);
         listaDeAdministradores.add((Administrador) administrador2);
 
