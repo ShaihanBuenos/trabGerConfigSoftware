@@ -1,5 +1,6 @@
 package model;
 
+
 public enum tipoDeExameEnum {
     RaioX,
     Tomografia,
@@ -11,7 +12,5 @@ public enum tipoDeExameEnum {
     Sangue,
     Urina,
     Colonoscopia
-}
-
-
+    }
 

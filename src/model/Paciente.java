@@ -22,8 +22,13 @@ public class Paciente extends Usuario{
 	        msg.append("Id: " + id + "\n");
 	        msg.append("Nome: " + nome + "\n");
 	        msg.append("Sobrenome: " + sobrenome + "\n");
+
+			msg.append("Email: " + email + "\n");
+			msg.append("Iniciais: " + iniciais + "\n");
+
 			    msg.append("Email: " + email + "\n");
 			    msg.append("Iniciais: " + iniciais + "\n");
+
 	        return msg.toString();
 	    }
 

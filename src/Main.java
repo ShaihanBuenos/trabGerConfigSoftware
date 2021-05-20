@@ -1,11 +1,11 @@
 import model.Medico;
 import model.Autorizacoes;
 import model.Paciente;
+import model.Administrador;
+import model.Exames;
 import model.Usuario;
-
 import java.util.InputMismatchException;
 import java.util.Scanner;
-
 import model.Administrador;
 import model.Exames;
 import model.Users;
@@ -13,12 +13,15 @@ import model.Users;
 public class Main {
     private static Usuario currentUser;
     private Scanner scan;
+    protected int numMedicos;           //Variavel para armazenar o numero de medicos
+    protected int numPacientes;         //Variavel para armazenar o numero de pacientes
 
     public Main(){
         scan = new Scanner(System.in);
     }
     public static void main(String[]args){
         Main main = new Main();
+
         //adiciona os exames disponíveis na clínica
         
         //PARA EXEMPLO
@@ -31,6 +34,7 @@ public class Main {
         System.out.println(adm1.toString());
         System.out.println(pac1.toString());
 
+
         currentUser = medico1;
 
         main.AddUser();
@@ -38,6 +42,7 @@ public class Main {
         currentUser = adm1;
 
         main.AddUser();
+
     }
 
     public void examesDisponiveis(){
@@ -45,6 +50,8 @@ public class Main {
             System.out.println(exame);
           }
     } 
+
+
 
     public void AddUser(){
         if (currentUser instanceof Administrador){
@@ -71,6 +78,7 @@ public class Main {
                     System.out.println("\nQual é o CRM do médico?\n");
                     String crm = scan.nextLine();
                     Medico newMedico = new Medico(nome, sobrenome, crm);
+                    numMedicos++;  
                     System.out.println("\nNovo médico: \n" + newMedico.toString());
                     break;
                 case Admin:
@@ -81,6 +89,7 @@ public class Main {
                     System.out.println("\nQual é o e-mail do paciente?\n");
                     String email = scan.nextLine();
                     Paciente newPatient = new Paciente(nome, sobrenome, email);
+                    numPacientes++;   
                     System.out.println("\nNovo paciente: \n" + newPatient.toString());
                     break;
             }
@@ -103,6 +112,16 @@ public class Main {
           return aux;
         }
       }
+
+      public int numPacientes(){                //Chamar o metodo quando o menu for criado para retornar o numero de Pacientes
+        return numPacientes;                    //Retorna o numero de Pacientes
+    }
+
+    public int numMedicos(){                   //Chamar o metodo quando o menu for criado para retornar o numero de Medicos
+        return numMedicos;                     //Retorna o numero de Medicos
+    }
+
+
 
 
 }
