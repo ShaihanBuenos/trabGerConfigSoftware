@@ -1,14 +1,9 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.List;
-public class Administrador extends Usuario{
-	private List<String> listaExames = new ArrayList<>();
-	private List<Medico> medicos = new ArrayList<>();
-	private List<Paciente> pacientes = new ArrayList<>();
 
+public class Administrador extends Usuario{
 
 	public static List<Administrador> listaDeAdministradores = new ArrayList<>();
 
