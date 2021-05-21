@@ -1,7 +1,13 @@
 package model;
 
-public class Administrador extends Usuario{
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
+public class Administrador extends Usuario{
+	private List<String> listaExames = new ArrayList<>();
+	private List<Medico> medicos = new ArrayList<>();
+	private List<Paciente> pacientes = new ArrayList<>();
 
 	public Administrador(String nome, String sobrenome) {
 		super(nome, sobrenome);
@@ -20,4 +26,5 @@ public class Administrador extends Usuario{
 
         return msg.toString();
     }
+
 }

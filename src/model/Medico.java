@@ -7,6 +7,7 @@ public class Medico extends Usuario{
     private String crm;
     private boolean autorizacaoExame;
     private  List<Autorizacoes> listaAutorizacoes = new ArrayList<Autorizacoes>();
+    private List<Paciente> pacientes = new ArrayList<>();
     //private List<Exame> listaDeExames = new ArrayList<Exame>();
 
     public Medico(String nome, String sobrenome, String crm){

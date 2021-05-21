@@ -168,7 +168,14 @@ public class Main {
                     }
                 }
                 else if(medicValue == 2){
-                    System.out.println("\nSENDO IMPLEMENTADO sla\n");
+                    if(medico.mostrarAutorizacoes().isEmpty()){
+                        System.out.println("Não há autorizações disponiveis.");
+                    }
+                    else {
+                        for (Autorizacoes at : medico.mostrarAutorizacoes()) {
+                            System.out.println(at.toString());
+                        }
+                    }
                 }
                 break;
             case 3:

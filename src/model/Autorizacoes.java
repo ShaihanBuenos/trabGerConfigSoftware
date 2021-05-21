@@ -3,6 +3,7 @@ package model;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Autorizacoes {
     private Medico medico;
@@ -11,7 +12,10 @@ public class Autorizacoes {
     private int id;
     private Date dataCadastro;
     private Exames exame;
-    private ArrayList<String> listaExames = new ArrayList<>();
+    private List<String> listaExames = new ArrayList<>();
+    private List<Medico> medicos = new ArrayList<>();
+    private List<Paciente> pacientes = new ArrayList<>();
+
     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
     public Autorizacoes(Date dataCadastro, Medico medico, Paciente paciente, Exames exame){
