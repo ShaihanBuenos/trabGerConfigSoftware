@@ -20,7 +20,7 @@ public class Autorizacoes {
 
     private static ArrayList<Autorizacoes> listaAutorizacoes = new ArrayList<>();
 
-    public Autorizacoes(Date dataCadastro, Medico medico, Paciente paciente, Exame exame){
+    public Autorizacoes(Date dataCadastro, Medico medico, Paciente paciente, Exames exame){
         idCounter++;
         this.id = idCounter;
         this.dataCadastro = dataCadastro;
@@ -64,7 +64,7 @@ public class Autorizacoes {
 
     public static ArrayList<Autorizacoes> getListaAutorizacoes() { return listaAutorizacoes; }
 
-    public Exame getExame() { return exame;}
+    public Exames getExame() { return exame;}
 
     @Override
     public String toString() {
