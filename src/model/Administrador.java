@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Administrador extends Usuario{
+	private List<String> listaExames = new ArrayList<>();
+	private List<Medico> medicos = new ArrayList<>();
+	private List<Paciente> pacientes = new ArrayList<>();
+
 
 	public static List<Administrador> listaDeAdministradores = new ArrayList<>();
 

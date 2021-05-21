@@ -7,6 +7,11 @@ import java.util.List;
 public class Medico extends Usuario{
     private String crm;
     private boolean autorizacaoExame;
+
+    private  List<Autorizacoes> listaAutorizacoes = new ArrayList<Autorizacoes>();
+    private List<Paciente> pacientes = new ArrayList<>();
+    //private List<Exame> listaDeExames = new ArrayList<Exame>();
+  
     public static List<Medico> listaDeMedicos = new ArrayList<>();
 
     public Medico(String nome, String sobrenome, String crm){
@@ -34,6 +39,13 @@ public class Medico extends Usuario{
     public void setAutorizacaoExame(boolean autorizacaoExame){
         this.autorizacaoExame = autorizacaoExame;
     }
+
+    public boolean autorizaExame(Autorizacoes autorizacao){
+        return  listaAutorizacoes.add(autorizacao);
+    }
+
+    public List<Autorizacoes> mostrarAutorizacoes(){
+        return listaAutorizacoes;}
 
     public String getAutorizacoesPorData(){
         StringBuilder string_return = new StringBuilder();

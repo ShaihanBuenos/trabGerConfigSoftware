@@ -1,5 +1,8 @@
 import model.*;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
@@ -18,8 +21,8 @@ public class Main {
         scan = new Scanner(System.in);
     }
 
+    public static void main(String[]args) throws ParseException {
 
-    public static void main(String[]args){
         Main main = new Main();
         Scanner in = new Scanner(System.in);
 
@@ -35,96 +38,39 @@ public class Main {
         System.out.println(adm1.toString());
         System.out.println(pac1.toString());
 
+
         //testes issue9 e issue11 20 e 21
         Autorizacoes aut1 = new Autorizacoes(new Date(2021, Calendar.MARCH,10),medico1,pac1,new Exame(Exames.Tomografia,true,new Date(2021, Calendar.MARCH,10)));
         Autorizacoes aut2 = new Autorizacoes(new Date(2021, Calendar.MARCH,9),medico1,pac1,new Exame(Exames.Ecografia,false,new Date()));
         Autorizacoes aut3 = new Autorizacoes(new Date(2021, Calendar.MARCH,11),medico1,pac1,new Exame(Exames.Mamografia,false,new Date(2021, Calendar.MARCH,11)));
         Autorizacoes aut4 = new Autorizacoes(new Date(2021, Calendar.MARCH,12),medico1,pac1,new Exame(Exames.Mamografia,false,new Date(2021, Calendar.MARCH,11)));
         Autorizacoes aut5 = new Autorizacoes(new Date(2021, Calendar.MARCH,8),medico1,pac1,new Exame(Exames.Mamografia,false,new Date(2021, Calendar.MARCH,11)));
-        
-        int firstMenu;
-        int mainMenu;
-        do{
-        System.out.println("Digite 1 para escolher o usuário. ");
-        System.out.println("Digite 2 para o menu de usuário. ");
-        firstMenu = in.nextInt();
 
-        switch(firstMenu){
-            case 1:
-
-            int codigoDeUsuario;
-            System.out.println("Digite 1 para administrador.");
-            System.out.println("Digite 2 para médico. ");
-            System.out.println("Digite 3 para paciente. ");
-            codigoDeUsuario = in.nextInt();
-            switch(codigoDeUsuario){
-               case 1: currentUser = adm1;
-               System.out.println("Administrador logado. "); break;
-
-               case 2: currentUser = medico1;
-               System.out.println("Médico logado. "); break;
-
-               case 3: currentUser = pac1;
-               System.out.println("Paciente logado."); break;
-
-               default: System.out.println("código inválido. "); break;
-            }
-            break;
-
-            case 2: 
-            do{
-                    System.out.println("Digite 1 para pesquisar um médico ou paciente. ");
-                    System.out.println("Digite 2 para adicionar um usuário. ");
-                    System.out.println("Digite 3 para voltar ao menu inicial. ");
-                    mainMenu = in.nextInt();
-                    switch(mainMenu){
-
-                    case 1:
-                    System.out.println(" [ 1 ] - Medico");
-                    System.out.println(" [ 2 ] - Paciente");
-                    String opcao_issue11 = main.scan.nextLine();
-                    if (opcao_issue11.equals("1")) {
-                        System.out.println(" Digite o nome do medico: ");
-                    }
-                    else if (opcao_issue11.equals("2")){
-                        System.out.println(" Digite o nome do paciente: ");
-                    }
-                    else{
-                        System.out.println("Opcao invalida");
-                    }
-                    String nome = main.scan.nextLine();
-                    if (opcao_issue11.equals("1")) {
-                        System.out.println(adm1.getAutorizacoesMedicoOuPaciente(nome, Users.Medic));
-                    }
-                    else if (opcao_issue11.equals("2")){
-                        System.out.println(adm1.getAutorizacoesMedicoOuPaciente(nome, Users.Patient));
-                    }
-                    
-                    System.out.println(adm1.getPercentualDeExamesRealizados());
-                    System.out.println(adm1.getTotalAutorizacoes());
-                    System.out.println(adm1.getTotalMedicos());
-                    System.out.println(adm1.getTotalPacientes());
-                    break;
-                    
-                    case 2: main.AddUser(); 
-                    break;
-
-                    case 3: break;
-        
-                    default: break;
-                }
-                
-            }while(mainMenu!=3); break;
-            
-            default: break;
+        System.out.println("Voce deseja buscar um Medico ou um Paciente: ");
+        System.out.println(" [ 1 ] - Medico");
+        System.out.println(" [ 2 ] - Paciente");
+        String opcao_issue11 = main.scan.nextLine();
+        if (opcao_issue11.equals("1")) {
+            System.out.println(" Digite o nome do medico: ");
         }
-        
-        
-    }while(firstMenu!=0);
-    
-    System.out.println("Fim do programa.");
-    
+        else if (opcao_issue11.equals("2")){
+            System.out.println(" Digite o nome do paciente: ");
+        }
+        else{
+            System.out.println("Opcao invalida");
+        }
+        String nome = main.scan.nextLine();
+        if (opcao_issue11.equals("1")) {
+            System.out.println(adm1.getAutorizacoesMedicoOuPaciente(nome, Users.Medic));
+        }
+        else if (opcao_issue11.equals("2")){
+            System.out.println(adm1.getAutorizacoesMedicoOuPaciente(nome, Users.Patient));
+        }
 
+        System.out.println(adm1.getPercentualDeExamesRealizados());
+        System.out.println(adm1.getTotalAutorizacoes());
+        System.out.println(adm1.getTotalMedicos());
+        System.out.println(adm1.getTotalPacientes());
     }
 
     public void examesDisponiveis(){
@@ -133,7 +79,159 @@ public class Main {
         }
     }
 
+    public void VerifyUser() throws ParseException {
+        Scanner sc = new Scanner(System.in);
+        int userValue = -1;
+        System.out.println("Qual sua classe de usuário ?");
+        System.out.println("1 - Admin");
+        System.out.println("2 - Médico");
+        System.out.println("3 - Paciente");
+        System.out.println("4 - Sair");
+        userValue = scan.nextInt();
 
+        switch(userValue){
+            case 1:
+                Usuario mainAdmin = new Administrador("Daniel", "Callegari");
+                System.out.println("\nBem vindo Admin!!!\n");
+                System.out.println("\n===================\n");
+                System.out.println("\nO que você deseja fazer?\n");
+                System.out.println("\n1 - Adicionar novo usuário\n");
+                System.out.println("\n2 - Adicionar novo usuário\n");
+                System.out.println("\n3 - Ver estatisticas gerais\n");
+                int adminValue = scan.nextInt();
+                if(adminValue == 1){
+                    currentUser = mainAdmin;
+                    AddUser();
+                }
+                else if(adminValue == 2){
+                    System.out.println("\nSENDO IMPLEMENTADO POR RAMIRO\n");
+                }
+                else if(adminValue == 3){
+                    System.out.println("\nSENDO IMPLEMENTADO POR LAURA\n");
+                }
+                break;
+            case 2:
+
+
+                System.out.println("\nBem vindo Médico!!!\n");
+                System.out.println("\n===================\n");
+                System.out.println("\nDigite seu nome:\n");
+                String nome = sc.nextLine();
+                System.out.println("\nDigite seu sobrenome:\n");
+                String sobrenome = sc.nextLine();
+                System.out.println("\nDigite seu CRM:\n");
+                String crm = sc.nextLine();
+                Medico medico = new Medico(nome, sobrenome, crm);
+                System.out.println("\nO que você deseja fazer?\n");
+                System.out.println("\n1 - Incluir autorização\n");
+                System.out.println("\n2 - Listar autorizaçãos\n");
+                int medicValue = scan.nextInt();
+                if(medicValue == 1){
+                    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+
+                    System.out.println("\nDigite o dia do cadastro:\n");
+                    String dia = sc.nextLine();
+                    System.out.println("\nDigite o mês do cadastro sendo 1 para janeiro,2 para fevereiro...\n");
+                    String mes = sc.nextLine();
+                    System.out.println("\nDigite o ano do cadastro:\n");
+                    String ano = sc.nextLine();
+                    Date dataCadastro = sdf.parse(dia +"/"+ mes +"/"+ ano);
+                    System.out.println("\nDigite o nome do paciente: \n");
+                    String nomePaciente = sc.nextLine();
+                    System.out.println("\nDigite o sobrenome do paciente:\n");
+                    String sobreNome = sc.nextLine();
+                    System.out.println("\nDigite o email do paciente: \n");
+                    String email = sc.nextLine();
+                    Paciente paciente = new Paciente(nomePaciente, sobreNome, email);
+                    System.out.println("\nQue tipo de exame deseja autorizar ? \n");
+                    System.out.println("\nDigite 1 para Raio-x \n");
+                    System.out.println("\nDigite 2 para Tomografia\n");
+                    System.out.println("\nDigite 3 para MRI\n");
+                    System.out.println("\nDigite 4 para Radiografia\n");
+                    System.out.println("\nDigite 5 para Mamografia\n");
+                    System.out.println("\nDigite 6 para Endoscopia\n");
+                    System.out.println("\nDigite 7 para Ecografia\n");
+                    System.out.println("\nDigite 8 para Sangue\n");
+                    System.out.println("\nDigite 9 para Urina\n");
+                    System.out.println("\nDigite 10 para Colonoscopia \n");
+                    int opcao = scan.nextInt();
+                    Exames exame = Exames.RaioX;
+                    switch (opcao){
+                        case 1:
+                            exame = Exames.RaioX;
+                            break;
+                        case 2:
+                            exame = Exames.Tomografia;
+                            break;
+                        case 3:
+                            exame = Exames.Tomografia;
+                            break;
+                        case 4:
+                            exame = Exames.Radiografia;
+                            break;
+                        case 5:
+                            exame = Exames.Mamografia;
+                            break;
+                        case 6:
+                            exame = Exames.Endoscopia;
+                            break;
+                        case 7:
+                            exame = Exames.Ecografia;
+                            break;
+                        case 8:
+                            exame = Exames.Sangue;
+                            break;
+                        case 9:
+                            exame = Exames.Urina;
+                            break;
+                        case 10:
+                            exame = Exames.Colonoscopia;
+                            break;
+
+                    }
+                    System.out.println("\nDigite o dia do cadastro:\n");
+                    String diaExame = sc.nextLine();
+                    System.out.println("\nDigite o mês do cadastro sendo 1 para janeiro,2 para fevereiro...\n");
+                    String mesExame = sc.nextLine();
+                    System.out.println("\nDigite o ano do cadastro:\n");
+                    String anoExame = sc.nextLine();
+                    Date dataExame = sdf.parse(diaExame +"/"+ mesExame +"/"+ anoExame);
+                    if(medico.autorizaExame(new Autorizacoes(dataCadastro, medico, paciente, new Exame(exame, true, dataExame)))){
+                        System.out.println("Autorização realizada!");
+                    }
+                    else{
+                        System.out.println("Autorização não realizada.");
+                    }
+                }
+                else if(medicValue == 2){
+                    if(medico.mostrarAutorizacoes().isEmpty()){
+                        System.out.println("Não há autorizações disponiveis.");
+                    }
+                    else {
+                        for (Autorizacoes at : medico.mostrarAutorizacoes()) {
+                            System.out.println(at.toString());
+                        }
+                    }
+                }
+                break;
+            case 3:
+                System.out.println("\nBem vindo Paciente!!!\n");
+                System.out.println("\n===================\n");
+                System.out.println("\nO que você deseja fazer?\n");
+                System.out.println("\n1 - Marcar exame como realizado\n");
+                System.out.println("\n2 - Listar autorizaçãos\n");
+                int pacienteValue = scan.nextInt();
+                if(pacienteValue == 1){
+                    System.out.println("\nIMPLEMENTADO POR RAMIRO\n");
+                }
+                else if(pacienteValue == 2){
+                    System.out.println("\nIMPLEMENTADO POR LUCAS E FELIPE\n");
+                }
+                break;
+            default:
+                System.out.println("\nMuito Obrigado, volte sempre!!!\n");
+        }
+    }
 
     public void AddUser(){
         if (currentUser instanceof Administrador){
