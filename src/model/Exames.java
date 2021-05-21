@@ -1,5 +1,6 @@
 package model;
 
+
 public enum Exames {
     RaioX,
     Tomografia,
@@ -11,7 +12,5 @@ public enum Exames {
     Sangue,
     Urina,
     Colonoscopia
-}
-
-
+    }
 

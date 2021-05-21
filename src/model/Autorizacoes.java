@@ -1,6 +1,6 @@
 package model;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.ArrayList;
 
 public class Autorizacoes {
@@ -9,16 +9,18 @@ public class Autorizacoes {
     private static int idCounter = 0;
     private int id;
     private Date dataCadastro;
-    private Exames exame;
-    private ArrayList<String> listaExames = new ArrayList<>(); 
+    private Exame exame;
 
-    public Autorizacoes(Date dataCadastro, Medico medico, Paciente paciente, Exames exame){
+    private static ArrayList<Autorizacoes> listaAutorizacoes = new ArrayList<>();
+
+    public Autorizacoes(Date dataCadastro, Medico medico, Paciente paciente, Exame exame){
         idCounter++;
         this.id = idCounter;
         this.dataCadastro = dataCadastro;
         this.medico = medico;
         this.paciente = paciente;
         this.exame = exame;
+        listaAutorizacoes.add(this);
     }
 
     public Medico getMedico() {
@@ -53,11 +55,18 @@ public class Autorizacoes {
         this.dataCadastro = dataCadastro;
     }
 
+    public static ArrayList<Autorizacoes> getListaAutorizacoes() { return listaAutorizacoes; }
+
+    public Exame getExame() { return exame;}
+
     @Override
     public String toString() {
-        return "Autorização: \n" + "Data de Cadastro: " + dataCadastro + "\n Tipo de exame: " + exame
-                + "\nId: " + id + "\nMédico: " + medico.getNome() + "\nPaciente: " + paciente.getNome() ;
+        return "\nAutorização: \n" + " Data de Cadastro: " + dataCadastro + "\n  Tipo de exame: " + exame
+                + "\n Id: " + id + "\n Médico: " + medico.getNome() + "\n Paciente: " + paciente.getNome() ;
     }
+
+
+
     
 }
 
