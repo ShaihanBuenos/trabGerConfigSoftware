@@ -20,4 +20,5 @@ public class Administrador extends Usuario{
 
         return msg.toString();
     }
+
 }

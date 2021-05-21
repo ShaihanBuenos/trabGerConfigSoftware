@@ -1,6 +1,6 @@
 package model;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.ArrayList;
 
 public class Autorizacoes {
@@ -10,7 +10,8 @@ public class Autorizacoes {
     private int id;
     private Date dataCadastro;
     private Exames exame;
-    private ArrayList<String> listaExames = new ArrayList<>(); 
+    private ArrayList<String> listaExames = new ArrayList<>();
+    private static ArrayList<Autorizacoes> listaAutorizacoes = new ArrayList<>();
 
     public Autorizacoes(Date dataCadastro, Medico medico, Paciente paciente, Exames exame){
         idCounter++;
@@ -19,6 +20,7 @@ public class Autorizacoes {
         this.medico = medico;
         this.paciente = paciente;
         this.exame = exame;
+        listaAutorizacoes.add(this);
     }
 
     public Medico getMedico() {
@@ -52,6 +54,8 @@ public class Autorizacoes {
     public void setDataCadastro(Date dataCadastro) {
         this.dataCadastro = dataCadastro;
     }
+
+    public static ArrayList<Autorizacoes> getListaAutorizacoes() { return listaAutorizacoes; }
 
     @Override
     public String toString() {
