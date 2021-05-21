@@ -1,22 +1,21 @@
-import model.Medico;
-import model.Autorizacoes;
-import model.Paciente;
-import model.Administrador;
-import model.Usuario;
+import model.*;
 
+import java.util.ArrayList;
+import java.util.InputMismatchException;
+import java.util.List;
+import java.util.Scanner;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.InputMismatchException;
-import java.util.Scanner;
-import model.Administrador;
-import model.Exames;
-import model.Users;
 
 public class Main {
     private static Usuario currentUser;
     private Scanner scan;
     protected int numMedicos;           //Variavel para armazenar o numero de medicos
     protected int numPacientes;         //Variavel para armazenar o numero de pacientes
+
+    public static List<Paciente> listaDePacientes = new ArrayList<>();
+    public static List<Medico> listaDeMedicos = new ArrayList<>();
+    public static List<Administrador> listaDeAdministradores = new ArrayList<>();
 
     public Main(){
         scan = new Scanner(System.in);
@@ -27,7 +26,7 @@ public class Main {
         Main main = new Main();
 
         //adiciona os exames disponíveis na clínica
-        
+
         //PARA EXEMPLO
         //Medico medico = new Medico("123","Luis", "Pereira", "123456");
         Medico        medico1 = new Medico       ("Lucas", "Cardoso", "194528-RS");
@@ -60,8 +59,8 @@ public class Main {
     public void examesDisponiveis(){
         for (Exames exame : Exames.values()) {
             System.out.println(exame);
-          }
-    } 
+        }
+    }
 
 
 
@@ -73,7 +72,7 @@ public class Main {
                 for (Users newUser : Users.values()) {
                     System.out.println(newUser.ordinal()+": "+ newUser);
                 }
-                
+
                 userValue = numberReader();
             } while ((userValue < 0) || (userValue >= Users.values().length));
 
@@ -90,7 +89,7 @@ public class Main {
                     System.out.println("\nQual é o CRM do médico?\n");
                     String crm = scan.nextLine();
                     Medico newMedico = new Medico(nome, sobrenome, crm);
-                    numMedicos++;  
+                    numMedicos++;
                     System.out.println("\nNovo médico: \n" + newMedico.toString());
                     break;
                 case Admin:
@@ -101,7 +100,7 @@ public class Main {
                     System.out.println("\nQual é o e-mail do paciente?\n");
                     String email = scan.nextLine();
                     Paciente newPatient = new Paciente(nome, sobrenome, email);
-                    numPacientes++;   
+                    numPacientes++;
                     System.out.println("\nNovo paciente: \n" + newPatient.toString());
                     break;
             }
@@ -114,18 +113,18 @@ public class Main {
     public int numberReader(){
         int aux;
         try {
-          aux = scan.nextInt();
-          scan.nextLine();
-          return aux;
+            aux = scan.nextInt();
+            scan.nextLine();
+            return aux;
         } catch (InputMismatchException e) {
-          scan.next();
-          System.out.println("\nFavor digitar numero.\n");
-          aux = -1;
-          return aux;
+            scan.next();
+            System.out.println("\nFavor digitar numero.\n");
+            aux = -1;
+            return aux;
         }
-      }
+    }
 
-      public int numPacientes(){                //Chamar o metodo quando o menu for criado para retornar o numero de Pacientes
+    public int numPacientes(){                //Chamar o metodo quando o menu for criado para retornar o numero de Pacientes
         return numPacientes;                    //Retorna o numero de Pacientes
     }
 
