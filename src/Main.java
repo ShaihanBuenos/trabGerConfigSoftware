@@ -1,9 +1,8 @@
 import model.*;
 
-import java.util.ArrayList;
-import java.util.InputMismatchException;
-import java.util.List;
-import java.util.Scanner;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 public class Main {
     private static Usuario currentUser;
@@ -18,8 +17,9 @@ public class Main {
     public Main(){
         scan = new Scanner(System.in);
     }
-    public static void main(String[]args){
+    public static void main(String[]args) throws ParseException {
         Main main = new Main();
+
 
         //adiciona os exames disponíveis na clínica
 
@@ -51,7 +51,8 @@ public class Main {
         }
     }
 
-    public void VerifyUser(){
+    public void VerifyUser() throws ParseException {
+        Scanner sc = new Scanner(System.in);
         int userValue = -1;
         System.out.println("Qual sua classe de usuário ?");
         System.out.println("1 - Amdin");
@@ -82,14 +83,89 @@ public class Main {
                 }
                 break;
             case 2:
+
+
                 System.out.println("\nBem vindo Médico!!!\n");
                 System.out.println("\n===================\n");
+                System.out.println("\nDigite seu nome:\n");
+                String nome = sc.nextLine();
+                System.out.println("\nDigite seu sobrenome:\n");
+                String sobrenome = sc.nextLine();
+                System.out.println("\nDigite seu CRM:\n");
+                String crm = sc.nextLine();
+                Medico medico = new Medico(nome, sobrenome, crm);
                 System.out.println("\nO que você deseja fazer?\n");
                 System.out.println("\n1 - Incluir autorização\n");
                 System.out.println("\n2 - Listar autorizaçãos\n");
                 int medicValue = scan.nextInt();
                 if(medicValue == 1){
-                    System.out.println("\nSERÁ IMPLEMENTADO POR VINICIO\n");
+                    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+
+                    System.out.println("\nDigite o dia do cadastro:\n");
+                    String dia = sc.nextLine();
+                    System.out.println("\nDigite o mês do cadastro sendo 1 para janeiro,2 para fevereiro...\n");
+                    String mes = sc.nextLine();
+                    System.out.println("\nDigite o ano do cadastro:\n");
+                    String ano = sc.nextLine();
+                    Date dataCadastro = sdf.parse(dia +"/"+ mes +"/"+ ano);
+                    System.out.println("\nDigite o nome do paciente: \n");
+                    String nomePaciente = sc.nextLine();
+                    System.out.println("\nDigite o sobrenome do paciente:\n");
+                    String sobreNome = sc.nextLine();
+                    System.out.println("\nDigite o email do paciente: \n");
+                    String email = sc.nextLine();
+                    Paciente paciente = new Paciente(nomePaciente, sobreNome, email);
+                    System.out.println("\nQue tipo de exame deseja autorizar ? \n");
+                    System.out.println("\nDigite 1 para Raio-x \n");
+                    System.out.println("\nDigite 2 para Tomografia\n");
+                    System.out.println("\nDigite 3 para MRI\n");
+                    System.out.println("\nDigite 4 para Radiografia\n");
+                    System.out.println("\nDigite 5 para Mamografia\n");
+                    System.out.println("\nDigite 6 para Endoscopia\n");
+                    System.out.println("\nDigite 7 para Ecografia\n");
+                    System.out.println("\nDigite 8 para Sangue\n");
+                    System.out.println("\nDigite 9 para Urina\n");
+                    System.out.println("\nDigite 10 para Colonoscopia \n");
+                    int opcao = scan.nextInt();
+                    Exames exame = Exames.RaioX;
+                    switch (opcao){
+                        case 1:
+                            exame = Exames.RaioX;
+                            break;
+                        case 2:
+                            exame = Exames.Tomografia;
+                            break;
+                        case 3:
+                            exame = Exames.Tomografia;
+                            break;
+                        case 4:
+                            exame = Exames.Radiografia;
+                            break;
+                        case 5:
+                            exame = Exames.Mamografia;
+                            break;
+                        case 6:
+                            exame = Exames.Endoscopia;
+                            break;
+                        case 7:
+                            exame = Exames.Ecografia;
+                            break;
+                        case 8:
+                            exame = Exames.Sangue;
+                            break;
+                        case 9:
+                            exame = Exames.Urina;
+                            break;
+                        case 10:
+                            exame = Exames.Colonoscopia;
+                            break;
+                    }
+                    if(medico.autorizaExame(new Autorizacoes(dataCadastro, medico, paciente, exame))){
+                        System.out.println("Autorização realizada!");
+                    }
+                    else{
+                        System.out.println("Autorização não realizada.");
+                    }
                 }
                 else if(medicValue == 2){
                     System.out.println("\nSENDO IMPLEMENTADO sla\n");

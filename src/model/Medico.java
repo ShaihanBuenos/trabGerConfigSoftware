@@ -1,8 +1,12 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Medico extends Usuario{
     private String crm;
     private boolean autorizacaoExame;
+    private  List<Autorizacoes> listaAutorizacoes = new ArrayList<Autorizacoes>();
     //private List<Exame> listaDeExames = new ArrayList<Exame>();
 
     public Medico(String nome, String sobrenome, String crm){
@@ -28,6 +32,13 @@ public class Medico extends Usuario{
         this.autorizacaoExame = autorizacaoExame;
     }
 
+    public boolean autorizaExame(Autorizacoes autorizacao){
+        return  listaAutorizacoes.add(autorizacao);
+    }
+
+    public List<Autorizacoes> mostrarAutorizacoes(){
+        return listaAutorizacoes;
+    }
 
     public String toString() {
         StringBuilder msg = new StringBuilder();

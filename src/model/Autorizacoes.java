@@ -1,6 +1,7 @@
 package model;
 
-import java.sql.Date;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.ArrayList;
 
 public class Autorizacoes {
@@ -10,7 +11,8 @@ public class Autorizacoes {
     private int id;
     private Date dataCadastro;
     private Exames exame;
-    private ArrayList<String> listaExames = new ArrayList<>(); 
+    private ArrayList<String> listaExames = new ArrayList<>();
+    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
     public Autorizacoes(Date dataCadastro, Medico medico, Paciente paciente, Exames exame){
         idCounter++;
@@ -55,7 +57,7 @@ public class Autorizacoes {
 
     @Override
     public String toString() {
-        return "Autorização: \n" + "Data de Cadastro: " + dataCadastro + "\n Tipo de exame: " + exame
+        return "Autorização: \n" + "Data de Cadastro: " + sdf.format( dataCadastro) + "\n Tipo de exame: " + exame
                 + "\nId: " + id + "\nMédico: " + medico.getNome() + "\nPaciente: " + paciente.getNome() ;
     }
     
