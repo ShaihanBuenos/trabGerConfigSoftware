@@ -33,14 +33,15 @@ public class Main {
         System.out.println(adm1.toString());
         System.out.println(pac1.toString());
 
+        main.VerifyUser();
 
-        currentUser = medico1;
+        //currentUser = medico1;
 
-        main.AddUser();
+        //main.AddUser();
 
-        currentUser = adm1;
+        //currentUser = adm1;
 
-        main.AddUser();
+        //main.AddUser();
 
     }
 
@@ -50,7 +51,68 @@ public class Main {
         }
     }
 
+    public void VerifyUser(){
+        int userValue = -1;
+        System.out.println("Qual sua classe de usuário ?");
+        System.out.println("1 - Amdin");
+        System.out.println("2 - Médico");
+        System.out.println("3 - Paciente");
+        System.out.println("4 - Sair");
+        userValue = scan.nextInt();
 
+        switch(userValue){
+            case 1:
+                Usuario mainAdmin = new Administrador("Daniel", "Callegari");
+                System.out.println("\nBem vindo Admin!!!\n");
+                System.out.println("\n===================\n");
+                System.out.println("\nO que você deseja fazer?\n");
+                System.out.println("\n1 - Adicionar novo usuário\n");
+                System.out.println("\n2 - Adicionar novo usuário\n");
+                System.out.println("\n3 - Ver estatisticas gerais\n");
+                int adminValue = scan.nextInt();
+                if(adminValue == 1){
+                    currentUser = mainAdmin;
+                    AddUser();
+                }
+                else if(adminValue == 2){
+                    System.out.println("\nSENDO IMPLEMENTADO POR RAMIRO\n");
+                }
+                else if(adminValue == 3){
+                    System.out.println("\nSENDO IMPLEMENTADO POR LAURA\n");
+                }
+                break;
+            case 2:
+                System.out.println("\nBem vindo Médico!!!\n");
+                System.out.println("\n===================\n");
+                System.out.println("\nO que você deseja fazer?\n");
+                System.out.println("\n1 - Incluir autorização\n");
+                System.out.println("\n2 - Listar autorizaçãos\n");
+                int medicValue = scan.nextInt();
+                if(medicValue == 1){
+                    System.out.println("\nSERÁ IMPLEMENTADO POR VINICIO\n");
+                }
+                else if(medicValue == 2){
+                    System.out.println("\nSENDO IMPLEMENTADO sla\n");
+                }
+                break;
+            case 3:
+                System.out.println("\nBem vindo Paciente!!!\n");
+                System.out.println("\n===================\n");
+                System.out.println("\nO que você deseja fazer?\n");
+                System.out.println("\n1 - Marcar exame como realizado\n");
+                System.out.println("\n2 - Listar autorizaçãos\n");
+                int pacienteValue = scan.nextInt();
+                if(pacienteValue == 1){
+                    System.out.println("\nIMPLEMENTADO POR RAMIRO\n");
+                }
+                else if(pacienteValue == 2){
+                    System.out.println("\nIMPLEMENTADO POR LUCAS E FELIPE\n");
+                }
+                break;
+            default:
+                System.out.println("\nMuito Obrigado, volte sempre!!!\n");
+        }
+    }
 
     public void AddUser(){
         if (currentUser instanceof Administrador){
