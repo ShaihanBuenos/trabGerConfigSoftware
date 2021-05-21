@@ -18,3 +18,6 @@ Integrantes:
 
 Flow: Git Flow
 
+Comando para compilação: javac -encoding UTF8 Main.java
+Comando para execução: java Main
+
