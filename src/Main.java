@@ -34,12 +34,12 @@ public class Main {
         System.out.println(adm1.toString());
         System.out.println(pac1.toString());
 
-        //testes issue9 e issue11
-        Autorizacoes aut1 = new Autorizacoes(new Date(2021, Calendar.MARCH,10),medico1,pac1,Exames.Colonoscopia);
-        Autorizacoes aut2 = new Autorizacoes(new Date(2021, Calendar.MARCH,9),medico1,pac1,Exames.Ecografia);
-        Autorizacoes aut3 = new Autorizacoes(new Date(2021, Calendar.MARCH,11),medico1,pac1,Exames.Mamografia);
-        Autorizacoes aut4 = new Autorizacoes(new Date(2021, Calendar.MARCH,12),medico1,pac1,Exames.MRI);
-        Autorizacoes aut5 = new Autorizacoes(new Date(2021, Calendar.MARCH,8),medico1,pac1,Exames.Tomografia);
+        //testes issue9 e issue11 20 e 21
+        Autorizacoes aut1 = new Autorizacoes(new Date(2021, Calendar.MARCH,10),medico1,pac1,new Exame(Exames.Tomografia,true,new Date(2021, Calendar.MARCH,10)));
+        Autorizacoes aut2 = new Autorizacoes(new Date(2021, Calendar.MARCH,9),medico1,pac1,new Exame(Exames.Ecografia,false,new Date()));
+        Autorizacoes aut3 = new Autorizacoes(new Date(2021, Calendar.MARCH,11),medico1,pac1,new Exame(Exames.Mamografia,false,new Date(2021, Calendar.MARCH,11)));
+        Autorizacoes aut4 = new Autorizacoes(new Date(2021, Calendar.MARCH,12),medico1,pac1,new Exame(Exames.Mamografia,false,new Date(2021, Calendar.MARCH,11)));
+        Autorizacoes aut5 = new Autorizacoes(new Date(2021, Calendar.MARCH,8),medico1,pac1,new Exame(Exames.Mamografia,false,new Date(2021, Calendar.MARCH,11)));
 
         System.out.println("Voce deseja buscar um Medico ou um Paciente: ");
         System.out.println(" [ 1 ] - Medico");
@@ -61,6 +61,13 @@ public class Main {
         else if (opcao_issue11.equals("2")){
             System.out.println(adm1.getAutorizacoesMedicoOuPaciente(nome, Users.Patient));
         }
+
+        System.out.println(adm1.getPercentualDeExamesRealizados());
+        System.out.println(adm1.getTotalAutorizacoes());
+        System.out.println(adm1.getTotalMedicos());
+        System.out.println(adm1.getTotalPacientes());
+
+
 
 
 

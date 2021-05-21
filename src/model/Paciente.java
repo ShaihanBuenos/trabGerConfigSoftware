@@ -1,8 +1,6 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 
 public class Paciente extends Usuario{
@@ -53,8 +51,10 @@ public class Paciente extends Usuario{
 		}
 		return string_return.toString();
 	}
-    
-	 public String toString() {
+
+	public static List<Paciente> getListaDePacientes() { return listaDePacientes;}
+
+	public String toString() {
 	        StringBuilder msg = new StringBuilder();
 	        msg.append("Id: " + id + "\n");
 	        msg.append("Nome: " + nome + "\n");

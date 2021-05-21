@@ -1,13 +1,13 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class Medico extends Usuario{
     private String crm;
     private boolean autorizacaoExame;
     public static List<Medico> listaDeMedicos = new ArrayList<>();
-    //private List<Exame> listaDeExames = new ArrayList<Exame>();
 
     public Medico(String nome, String sobrenome, String crm){
         super(nome, sobrenome);
@@ -16,7 +16,9 @@ public class Medico extends Usuario{
         this.autorizacaoExame = true;
         listaDeMedicos.add(this);
     }
-    
+
+    public static List<Medico> getListaDeMedicos() { return listaDeMedicos; }
+
     public String getCrm() {
         return crm;
     }
