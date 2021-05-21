@@ -42,65 +42,85 @@ public class Main {
         Autorizacoes aut4 = new Autorizacoes(new Date(2021, Calendar.MARCH,12),medico1,pac1,new Exame(Exames.Mamografia,false,new Date(2021, Calendar.MARCH,11)));
         Autorizacoes aut5 = new Autorizacoes(new Date(2021, Calendar.MARCH,8),medico1,pac1,new Exame(Exames.Mamografia,false,new Date(2021, Calendar.MARCH,11)));
         
-        int opcao;
+        int firstMenu;
+        int mainMenu;
         do{
-        System.out.println("Digite 0 para escolher o usuário. ");
-        System.out.println("Digite 1 para pesquisar um médico ou paciente. ");
-        System.out.println("Digite 2 para adicionar um usuário. ");
-        System.out.println("Digite 3 para encerrar o programa. ");
-        opcao = in.nextInt();
-        switch(opcao){
+        System.out.println("Digite 1 para escolher o usuário. ");
+        System.out.println("Digite 2 para o menu de usuário. ");
+        firstMenu = in.nextInt();
 
-            case 0: 
-            int user;
+        switch(firstMenu){
+            case 1:
+
+            int codigoDeUsuario;
             System.out.println("Digite 1 para administrador.");
             System.out.println("Digite 2 para médico. ");
-            user = in.nextInt();
-            switch(user){
+            System.out.println("Digite 3 para paciente. ");
+            codigoDeUsuario = in.nextInt();
+            switch(codigoDeUsuario){
                case 1: currentUser = adm1;
                System.out.println("Administrador logado. "); break;
 
                case 2: currentUser = medico1;
                System.out.println("Médico logado. "); break;
 
+               case 3: currentUser = pac1;
+               System.out.println("Paciente logado."); break;
+
                default: System.out.println("código inválido. "); break;
             }
             break;
 
-            case 1:
-            System.out.println(" [ 1 ] - Medico");
-            System.out.println(" [ 2 ] - Paciente");
-            String opcao_issue11 = main.scan.nextLine();
-            if (opcao_issue11.equals("1")) {
-                System.out.println(" Digite o nome do medico: ");
-            }
-            else if (opcao_issue11.equals("2")){
-                System.out.println(" Digite o nome do paciente: ");
-            }
-            else{
-                System.out.println("Opcao invalida");
-            }
-            String nome = main.scan.nextLine();
-            if (opcao_issue11.equals("1")) {
-                System.out.println(adm1.getAutorizacoesMedicoOuPaciente(nome, Users.Medic));
-            }
-            else if (opcao_issue11.equals("2")){
-                System.out.println(adm1.getAutorizacoesMedicoOuPaciente(nome, Users.Patient));
-            }
-            
-            System.out.println(adm1.getPercentualDeExamesRealizados());
-            System.out.println(adm1.getTotalAutorizacoes());
-            System.out.println(adm1.getTotalMedicos());
-            System.out.println(adm1.getTotalPacientes());
-            break;
-            
-            case 2: main.AddUser(); 
-            break;
+            case 2: 
+            do{
+                    System.out.println("Digite 1 para pesquisar um médico ou paciente. ");
+                    System.out.println("Digite 2 para adicionar um usuário. ");
+                    System.out.println("Digite 3 para voltar ao menu inicial. ");
+                    mainMenu = in.nextInt();
+                    switch(mainMenu){
 
+                    case 1:
+                    System.out.println(" [ 1 ] - Medico");
+                    System.out.println(" [ 2 ] - Paciente");
+                    String opcao_issue11 = main.scan.nextLine();
+                    if (opcao_issue11.equals("1")) {
+                        System.out.println(" Digite o nome do medico: ");
+                    }
+                    else if (opcao_issue11.equals("2")){
+                        System.out.println(" Digite o nome do paciente: ");
+                    }
+                    else{
+                        System.out.println("Opcao invalida");
+                    }
+                    String nome = main.scan.nextLine();
+                    if (opcao_issue11.equals("1")) {
+                        System.out.println(adm1.getAutorizacoesMedicoOuPaciente(nome, Users.Medic));
+                    }
+                    else if (opcao_issue11.equals("2")){
+                        System.out.println(adm1.getAutorizacoesMedicoOuPaciente(nome, Users.Patient));
+                    }
+                    
+                    System.out.println(adm1.getPercentualDeExamesRealizados());
+                    System.out.println(adm1.getTotalAutorizacoes());
+                    System.out.println(adm1.getTotalMedicos());
+                    System.out.println(adm1.getTotalPacientes());
+                    break;
+                    
+                    case 2: main.AddUser(); 
+                    break;
+
+                    case 3: break;
+        
+                    default: break;
+                }
+                
+            }while(mainMenu!=3); break;
+            
             default: break;
         }
         
-    }while(opcao!=3);
+        
+    }while(firstMenu!=0);
     
     System.out.println("Fim do programa.");
     
