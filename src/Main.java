@@ -188,14 +188,15 @@ public class Main {
                         case 10:
                             exame = Exames.Colonoscopia;
                             break;
-                        System.out.println("\nDigite o dia do cadastro:\n");
-                        String diaExame = sc.nextLine();
-                        System.out.println("\nDigite o mês do cadastro sendo 1 para janeiro,2 para fevereiro...\n");
-                        String mesExame = sc.nextLine();
-                        System.out.println("\nDigite o ano do cadastro:\n");
-                        String anoExame = sc.nextLine();
-                        Date dataExame = sdf.parse(diaExame +"/"+ mesExame +"/"+ anoExame);
+
                     }
+                    System.out.println("\nDigite o dia do cadastro:\n");
+                    String diaExame = sc.nextLine();
+                    System.out.println("\nDigite o mês do cadastro sendo 1 para janeiro,2 para fevereiro...\n");
+                    String mesExame = sc.nextLine();
+                    System.out.println("\nDigite o ano do cadastro:\n");
+                    String anoExame = sc.nextLine();
+                    Date dataExame = sdf.parse(diaExame +"/"+ mesExame +"/"+ anoExame);
                     if(medico.autorizaExame(new Autorizacoes(dataCadastro, medico, paciente, new Exame(exame, true, dataExame)))){
                         System.out.println("Autorização realizada!");
                     }

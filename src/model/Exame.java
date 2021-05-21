@@ -2,6 +2,7 @@ package model;
 
 import jdk.jfr.Percentage;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Exame {
@@ -10,6 +11,8 @@ public class Exame {
     private Exames exame;
     private boolean foiRealizado = false;
     private Date dataRealizado;
+
+    SimpleDateFormat sfd = new SimpleDateFormat("dd/MM/yyyy");
 
     public Exame(Exames exame) {
         idCounter++;
@@ -72,7 +75,7 @@ public class Exame {
         if (foiRealizado) {
             return "\n- Tipo de exame: " + exame +
                     "\n- Foi realizado: Sim" +
-                    "\n- Data de realizacao: " + dataRealizado;
+                    "\n- Data de realizacao: " + sfd.format(dataRealizado);
         } else {
             return "\n- Tipo de exame: " + exame +
                     "\n- Foi realizado: Nao";
