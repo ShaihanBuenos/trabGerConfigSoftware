@@ -13,9 +13,6 @@ public class Main {
     protected int numMedicos;           //Variavel para armazenar o numero de medicos
     protected int numPacientes;         //Variavel para armazenar o numero de pacientes
 
-    public static List<Paciente> listaDePacientes = new ArrayList<>();
-    public static List<Medico> listaDeMedicos = new ArrayList<>();
-    public static List<Administrador> listaDeAdministradores = new ArrayList<>();
 
     public Main(){
         scan = new Scanner(System.in);
@@ -37,13 +34,35 @@ public class Main {
         System.out.println(adm1.toString());
         System.out.println(pac1.toString());
 
-        //testes issue9
-        //Autorizacoes aut1 = new Autorizacoes(new Date(2021, Calendar.MARCH,10),medico1,pac1,Exames.Colonoscopia);
-        //Autorizacoes aut2 = new Autorizacoes(new Date(2021, Calendar.MARCH,9),medico1,pac1,Exames.Ecografia);
-        //Autorizacoes aut3 = new Autorizacoes(new Date(2021, Calendar.MARCH,11),medico1,pac1,Exames.Mamografia);
-        //Autorizacoes aut4 = new Autorizacoes(new Date(2021, Calendar.MARCH,12),medico1,pac1,Exames.MRI);
-        //Autorizacoes aut5 = new Autorizacoes(new Date(2021, Calendar.MARCH,8),medico1,pac1,Exames.Tomografia);
-        //System.out.println(pac1.getAutorizacoesPorData());
+        //testes issue9 e issue11
+        Autorizacoes aut1 = new Autorizacoes(new Date(2021, Calendar.MARCH,10),medico1,pac1,Exames.Colonoscopia);
+        Autorizacoes aut2 = new Autorizacoes(new Date(2021, Calendar.MARCH,9),medico1,pac1,Exames.Ecografia);
+        Autorizacoes aut3 = new Autorizacoes(new Date(2021, Calendar.MARCH,11),medico1,pac1,Exames.Mamografia);
+        Autorizacoes aut4 = new Autorizacoes(new Date(2021, Calendar.MARCH,12),medico1,pac1,Exames.MRI);
+        Autorizacoes aut5 = new Autorizacoes(new Date(2021, Calendar.MARCH,8),medico1,pac1,Exames.Tomografia);
+
+        System.out.println("Voce deseja buscar um Medico ou um Paciente: ");
+        System.out.println(" [ 1 ] - Medico");
+        System.out.println(" [ 2 ] - Paciente");
+        String opcao_issue11 = main.scan.nextLine();
+        if (opcao_issue11.equals("1")) {
+            System.out.println(" Digite o nome do medico: ");
+        }
+        else if (opcao_issue11.equals("2")){
+            System.out.println(" Digite o nome do paciente: ");
+        }
+        else{
+            System.out.println("Opcao invalida");
+        }
+        String nome = main.scan.nextLine();
+        if (opcao_issue11.equals("1")) {
+            System.out.println(adm1.getAutorizacoesMedicoOuPaciente(nome, Users.Medic));
+        }
+        else if (opcao_issue11.equals("2")){
+            System.out.println(adm1.getAutorizacoesMedicoOuPaciente(nome, Users.Patient));
+        }
+
+
 
 
         currentUser = medico1;
