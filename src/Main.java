@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
+import java.util.Calendar;
+import java.util.Date;
 
 public class Main {
     private static Usuario currentUser;
@@ -18,6 +20,8 @@ public class Main {
     public Main(){
         scan = new Scanner(System.in);
     }
+
+
     public static void main(String[]args){
         Main main = new Main();
 
@@ -32,6 +36,14 @@ public class Main {
         System.out.println(medico1.toString());
         System.out.println(adm1.toString());
         System.out.println(pac1.toString());
+
+        //testes issue9
+        //Autorizacoes aut1 = new Autorizacoes(new Date(2021, Calendar.MARCH,10),medico1,pac1,Exames.Colonoscopia);
+        //Autorizacoes aut2 = new Autorizacoes(new Date(2021, Calendar.MARCH,9),medico1,pac1,Exames.Ecografia);
+        //Autorizacoes aut3 = new Autorizacoes(new Date(2021, Calendar.MARCH,11),medico1,pac1,Exames.Mamografia);
+        //Autorizacoes aut4 = new Autorizacoes(new Date(2021, Calendar.MARCH,12),medico1,pac1,Exames.MRI);
+        //Autorizacoes aut5 = new Autorizacoes(new Date(2021, Calendar.MARCH,8),medico1,pac1,Exames.Tomografia);
+        //System.out.println(pac1.getAutorizacoesPorData());
 
 
         currentUser = medico1;
