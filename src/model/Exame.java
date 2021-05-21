@@ -1,7 +1,6 @@
 package model;
 
 import jdk.jfr.Percentage;
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -75,7 +74,10 @@ public class Exame {
         if (foiRealizado) {
             return "\n- Tipo de exame: " + exame +
                     "\n- Foi realizado: Sim" +
+
                     "\n- Data de realizacao: " + sfd.format(dataRealizado);
+                    "\n- Data de realizacao: " + dataRealizado;
+
         } else {
             return "\n- Tipo de exame: " + exame +
                     "\n- Foi realizado: Nao";

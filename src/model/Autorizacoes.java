@@ -1,6 +1,8 @@
 package model;
 
+
 import java.text.SimpleDateFormat;
+
 import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
@@ -68,9 +70,9 @@ public class Autorizacoes {
 
     @Override
     public String toString() {
+      
         return "Autorização: \n" + "Data de Cadastro: " + sdf.format( dataCadastro) + "\n Tipo de exame: " + exame
-                + "\nId: " + id + "\nMédico: " + medico.getNome() + "\nPaciente: " + paciente.getNome() ;
-
+                + "\nId: " + id + "\nMédico: " + medico.getNome() + "\nPaciente: " + paciente.getNome();
     }
 
 

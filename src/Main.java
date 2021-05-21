@@ -1,4 +1,5 @@
 import model.*;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -23,7 +24,7 @@ public class Main {
     public static void main(String[]args) throws ParseException {
 
         Main main = new Main();
-
+        Scanner in = new Scanner(System.in);
 
         //adiciona os exames disponíveis na clínica
 
@@ -37,7 +38,6 @@ public class Main {
         System.out.println(adm1.toString());
         System.out.println(pac1.toString());
 
-        main.VerifyUser();
 
         //testes issue9 e issue11 20 e 21
         Autorizacoes aut1 = new Autorizacoes(new Date(2021, Calendar.MARCH,10),medico1,pac1,new Exame(Exames.Tomografia,true,new Date(2021, Calendar.MARCH,10)));
@@ -71,7 +71,6 @@ public class Main {
         System.out.println(adm1.getTotalAutorizacoes());
         System.out.println(adm1.getTotalMedicos());
         System.out.println(adm1.getTotalPacientes());
-
     }
 
     public void examesDisponiveis(){
@@ -84,7 +83,7 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         int userValue = -1;
         System.out.println("Qual sua classe de usuário ?");
-        System.out.println("1 - Amdin");
+        System.out.println("1 - Admin");
         System.out.println("2 - Médico");
         System.out.println("3 - Paciente");
         System.out.println("4 - Sair");
