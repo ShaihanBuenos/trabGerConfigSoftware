@@ -43,7 +43,7 @@ public class Medico extends Usuario{
     }
 
     public List<Autorizacoes> mostrarAutorizacoes(){
-        return listaAutorizacoes;
+        return listaAutorizacoes;}
       
     public String getAutorizacoesPorData(){
         StringBuilder string_return = new StringBuilder();
@@ -86,4 +86,4 @@ public class Medico extends Usuario{
         return msg.toString();
     }
 
-}}
+}

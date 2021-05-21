@@ -11,7 +11,7 @@ public class Autorizacoes {
     private static int idCounter = 0;
     private int id;
     private Date dataCadastro;
-    private Exames exame;
+    private Exame exame;
     private List<String> listaExames = new ArrayList<>();
     private List<Medico> medicos = new ArrayList<>();
     private List<Paciente> pacientes = new ArrayList<>();
