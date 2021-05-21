@@ -72,11 +72,11 @@ public class Exame {
     @Override
     public String toString() {
         if (foiRealizado) {
-            return "\n- Tipo de exame: " + exame +
+            return  "\n- Tipo de exame: " + exame +
                     "\n- Foi realizado: Sim" +
 
                     "\n- Data de realizacao: " + sfd.format(dataRealizado);
-                    "\n- Data de realizacao: " + dataRealizado;
+                    
 
         } else {
             return "\n- Tipo de exame: " + exame +
