@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Date;
+
 public abstract class Usuario {
     private static int IDCounter = 0;
     protected String id;
@@ -51,5 +53,6 @@ public abstract class Usuario {
         IDCounter++;
         return IDCounter;
     }
-	
+
+
 }
