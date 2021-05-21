@@ -1,5 +1,7 @@
 package model;
 
+import jdk.jfr.Percentage;
+
 import java.util.Date;
 
 public class Exame {
@@ -53,6 +55,16 @@ public class Exame {
 
     public void setDataRealizado(Date dataRealizado) {
         this.dataRealizado = dataRealizado;
+    }
+
+    public static double getTotalExamesRealizados(){
+        int contador=0;
+        for (Autorizacoes autorizacao : Autorizacoes.getListaAutorizacoes()) {
+            if (autorizacao.getExame().foiRealizado){
+                contador++;
+            }
+        }
+        return (double) ((double)contador/(Autorizacoes.getListaAutorizacoes().size())*100);
     }
 
     @Override

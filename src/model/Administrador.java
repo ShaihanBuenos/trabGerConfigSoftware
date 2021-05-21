@@ -63,4 +63,21 @@ public class Administrador extends Usuario{
 		return null;
 	}
 
+
+	public String getPercentualDeExamesRealizados(){
+		return "Percentual: " + Exame.getTotalExamesRealizados() + "%";
+	}
+
+	public String getTotalAutorizacoes(){
+		return "Sistema tem um total de " + Autorizacoes.getListaAutorizacoes().size() + " autorizacoes.";
+	}
+
+	public String getTotalMedicos(){
+		return "Sistema tem um total de " + Medico.getListaDeMedicos().size() + " medicos.";
+	}
+
+	public String getTotalPacientes(){
+		return "Sistema tem um total de " + Paciente.getListaDePacientes().size() + " pacientes.";
+	}
+
 }
